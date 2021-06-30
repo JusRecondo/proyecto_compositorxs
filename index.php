@@ -101,7 +101,7 @@ require_once 'functions.php';
         </section>
     </main>
     <footer>
-        <a href="" target="_blank">proyecto_compositorxs 2021</a>
+        <a href="https://github.com/JusRecondo/proyecto_compositorxs" target="_blank">proyecto_compositorxs 2021</a>
     </footer>    
 </body>
 </html>
