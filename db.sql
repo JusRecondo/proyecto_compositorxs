@@ -5,6 +5,7 @@ CREATE TABLE `proyecto_compositorxs`.`compositorxs` (
     `pic` VARCHAR(500) NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
 INSERT INTO `compositorxs` (`id`, `nombre`, `bio`, `pic`)
 VALUES (
         NULL,
@@ -39,4 +40,5 @@ VALUES (
         'delia derbyshire',
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae soluta consectetur sed suscipit cumque in dolorem alias molestias nemo corporis iure, fugiat minus magnam perferendis qui voluptatibus, aliquam animi ipsa aperiam nisi praesentium corrupti harum! Non perspiciatis velit, sit natus corrupti reiciendis dolorum, eveniet debitis blanditiis voluptates reprehenderit a inventore?\r\n\r\nLorem ipsum, dolor sit amet consectetur adipisicing elit. Quae soluta consectetur sed suscipit cumque in dolorem alias molestias nemo corporis iure, fugiat minus magnam perferendis qui voluptatibus, aliquam animi ipsa aperiam nisi praesentium corrupti harum! Non perspiciatis velit, sit natus corrupti reiciendis dolorum, eveniet debitis blanditiis voluptates reprehenderit a inventore?',
         'https://soundgirls.org/wp-content/uploads/2019/03/DD2.jpg'
-    )
+    );
+

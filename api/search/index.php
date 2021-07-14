@@ -17,12 +17,14 @@ if  ( $connection->connect_error ) {
         $search =  trim( $_GET['search'] );
 
         $result = $connection->query( 'SELECT * FROM compositorxs 
-            WHERE nombre LIKE "%' . $search . '%"' );
+            WHERE nombre LIKE "%' . $search . '%"
+            ORDER BY nombre' );
         
         while ( $fila = $result->fetch_assoc() ) {
         
             $compositorx = array();
-    
+            
+            $compositorx['id'] = $fila['id'];
             $compositorx['nombre'] = $fila['nombre'];
             $compositorx['bio'] = $fila['bio'];
             $compositorx['pic'] = $fila['pic'];
@@ -36,4 +38,3 @@ if  ( $connection->connect_error ) {
 header ( 'Content-Type: application/json' );
 echo json_encode( $compositorxs );
 
-?>

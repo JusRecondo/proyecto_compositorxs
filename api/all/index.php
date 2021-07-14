@@ -11,7 +11,7 @@ if  ( $connection->connect_error ) {
     die( 'No se ha podido establecer conexión' );
 } else {
 
-    $result = $connection->query( 'SELECT * FROM compositorxs WHERE 1' );
+    $result = $connection->query( 'SELECT * FROM compositorxs ORDER BY nombre' );
 
     while ( $fila = $result->fetch_assoc() ) {
         
@@ -24,12 +24,9 @@ if  ( $connection->connect_error ) {
         $compositorxs[] = $compositorx;
     }
 
-   /*  echo '<pre>';
-    var_dump($compositorxs); */
 }
 
 
 header ( 'Content-Type: application/json' );
 echo json_encode( $compositorxs );
 
-?>

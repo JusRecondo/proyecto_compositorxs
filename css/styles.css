@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,32 +10,77 @@
     scroll-behavior: smooth;
 }
 
+:root {
+    --main-bg-color: #fafafa;
+    --main-font-color: #000000;
+}
+
 body {
     font-family: 'Cousine', monospace;
 }
 
 header {
-    padding: 4vw;
+    padding: 2vw;
 }
+
+h1 {
+    font-size: 28px;
+}
+
+/* Menú navegación */
 
 nav {
     position: fixed;
-    background: rgba(255, 255, 255, 0.8);
-    opacity: 0.5;
-    transition: opacity 0.5s;
+    z-index: 1;
+    background: rgba(255, 255, 255);
+    width: 100%;
 }
 
 nav:hover {
     opacity: 1;
 }
 
-nav ul#menuPrincipal li.menu-item{
-    margin-bottom: 10px;
+ul#menuPrincipal,
+ul#menuAdmin {
+    display: none;
 }
 
+nav li.menu-item{
+    margin: 10px 0;
+}
+
+nav li.menu-item.active {
+    font-weight: 700;
+}
+
+button#openMenuBtn {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    margin-right: 2vw;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    position: fixed;
+    right: 1px;
+}
+
+#openMenuBtn div {
+    background-color: #000000;
+    width: 32px;
+    height: 2px;
+    transition: transform 0.3s;
+}
+
+#openMenuBtn div.burger-line-y {
+    transform: rotate(90deg);
+    margin-top: -2px;
+}
+
+/* Main */
+
 main {
-    max-width: 900px;
     margin: auto;
+    min-height: 80vh;
 }
 
 section {
@@ -41,6 +88,52 @@ section {
     flex-direction: column;
     align-items: center;
     padding: 4vw;
+    margin: auto;
+}
+
+section#contacto,
+section#buscar,
+section#login {
+    max-width: 900px;
+} 
+
+section#cargarCompositorx,
+section#editarCompositorx {
+    max-width: 1200px;
+} 
+
+section#fichasCompositorxs {
+    display: flex;
+    flex-direction: column;
+}
+
+.ficha-compositorx {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#resultadoBusqueda {
+    width: 100%;
+    margin: 20px 0;
+}
+
+article#resultadoBusqueda .ficha-compositorx {
+    width: 100%;
+}
+.ficha-compositorx .enlace-edit {
+    color: #ffffff;
+}
+
+#formEditTitulo {
+    text-transform: capitalize;
+}
+
+h2 {
+    font-size: 22px;
 }
 
 h1, 
@@ -49,6 +142,10 @@ h3,
 p, 
 figure {
     margin: 20px 0;
+}
+
+.nombre-compositorx {
+    text-transform: capitalize;
 }
 
 a {
@@ -63,6 +160,8 @@ img {
     width: 100%;
     max-width: 500px;
 }
+
+/* Formularios */
 
 form {
     display: flex;
@@ -91,12 +190,140 @@ textarea {
 }
 
 input[type="submit"] {
-    width: 20%;
+    width: 24%;
     cursor: pointer;
     font-family: 'Cousine', monospace;
 }
 
+
+#eliminarFicha {
+    line-height: 2.5;
+}
+
+#eliminarFicha:hover {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#formEdit.hidden,
+#eliminarFicha.hidden,
+.enlace-edit.hidden {
+    display: none;
+}
+
+
+section.aviso.hide {
+    animation: fadeOut ease 3s;
+    animation-fill-mode: forwards;
+}
+
+section.aviso.hide h2,
+section.aviso.hide p {
+    animation: fadeOut ease 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      padding: 0;
+    }
+    100% {
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+}
+
 footer {
     padding: 2vw;
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media ( min-width: 768px ) {
+    section#fichasCompositorxs {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .ficha-compositorx {
+        width: 50%;
+    }
+}    
+
+
+@media ( min-width: 1200px ) {
+    header {
+        padding: 4vw;
+    }
+
+    main {
+        max-width: 950px;
+    }
+
+    nav {
+        width: auto;
+    }
+
+    button#openMenuBtn {
+        display: none;
+    }
+
+    ul#menuPrincipal,
+    ul#menuAdmin {
+        display: block;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+    
+}
+
+
+@media ( min-width: 1400px ) {
+    main {
+        max-width: 1200px;
+    }
+}
+
+@media ( min-width: 1700px ) {
+    main {
+        max-width: 1500px;
+    }
+}
+
+
+/* 
+* Menu tablet-mobile
+*/
+
+@media ( max-width: 1200px ) {
+    body.mobile-menu-active ul#menuPrincipal,
+    body.mobile-menu-active ul#menuAdmin {
+        display: block;
+    }
+    
+    body.mobile-menu-active nav {
+        border: 1px solid #000000;
+        right: 0;
+        padding: 2vw 4vw;
+    }
+
+    body.mobile-menu-active #openMenuBtn div.burger-line-y {
+        transform: rotate(136deg);
+    }
+
+    body.mobile-menu-active #openMenuBtn div.burger-line-x {
+        transform: rotate(45deg);
+    }
 }

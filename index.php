@@ -14,17 +14,20 @@ require_once 'functions.php';
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>proyecto_compositorxs</h1>
+        <a href="index.php">
+            <h1>proyecto_compositorxs</h1>
+        </a>
 
         <nav>
+            <button id="openMenuBtn">
+                <div class="burger-line-x"></div>
+                <div class="burger-line-y"></div>
+            </button>
             <ul id="menuPrincipal">
-                <li class="menu-item">
+                <li class="menu-item active">
                     <a href="#fichasCompositorxs">Compositorxs</a>
                 </li>
                 <li class="menu-item">
@@ -33,22 +36,33 @@ require_once 'functions.php';
                 <li class="menu-item">
                     <a href="#contacto">Contacto</a>
                 </li>
+                <li class="menu-item">
+                    <a href="login.php" class="enlace-login"><?php echo menuAdmin()?></a>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main>
             <?php 
-                if ( ! empty ( $_GET['gracias'] ) &&
-                $_GET['gracias'] === 'ok' ) {
+                if ( ! empty ( $_GET['ok'] ) ) {
+                    if ( $_GET['ok'] === 'true' ) {
                     ?>
 
-                <section id="gracias">
-                    <h2>Gracias por colaborar!</h2>
-                    <p>Vamos a evaluar tu propuesta.</p>
-                </section>
-                 
-                <?php 
+                        <section class="aviso">
+                            <h2>Gracias por colaborar!</h2>
+                            <p>Vamos a evaluar tu propuesta.</p>
+                        </section>  
+
+                     <?php 
+                    } else if ( $_GET['ok'] === 'false' ) {
+                    ?>
+                        <section class="aviso">
+                            <h2>Hubo un error :(</h2>
+                            <p>Por favor completa todos los datos pedidos en el formulario.</p>
+                        </section>                
+                    <?php 
+                    }
                 }
             ?>
 
@@ -83,12 +97,12 @@ require_once 'functions.php';
                     <input type="text" name="nombre" required>
                 </label>
 
-                <label>Breve bio (máx. 2000 caracteres)
+                <label>Breve bio: (máx. 2000 caracteres)
                     <textarea name="bio" maxlength="2000"
                     required></textarea>
                 </label>
 
-                <label>Foto (enlace)
+                <label>Foto: (enlace)
                     <input type="url" name="pic" required>
                 </label>
 
@@ -101,7 +115,7 @@ require_once 'functions.php';
         </section>
     </main>
     <footer>
-        <a href="https://github.com/JusRecondo/proyecto_compositorxs" target="_blank">proyecto_compositorxs 2021</a>
+        <a href="https://github.com/JusRecondo/proyecto_compositorxs" target="_blank">gitHub proyecto_compositorxs 2021</a>
     </footer>    
 </body>
 </html>
